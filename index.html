@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aprendiendo con amor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        @font-face {
+            font-family: 'gallicide';
+            src: url('assets/fonts/gallicide/Gallicide-Demo.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .card-text,
+        .text-gallicide {
+            font-family: 'gallicide', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .font-responsive {
+            font-size: 8rem;
+
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+
+            .font-responsive {
+                font-size: 6 rem;
+                /* Tamaño más pequeño para pantallas más pequeñas */
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+
+        /* Contenedor de la imagen de superposición */
+        .card {
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Imagen de superposición */
+        .overlay-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        /* Efecto hover */
+        .card:hover .overlay {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .text-pink {
+            color: #f772df;
+        }
+
+        .text-purple {
+            color: #5a23c8;
+        }
+
+        .text-brown {
+            color: #864c00;
+        }
+
+        .text-orange {
+            color: #ffad14;
+        }
+    </style>
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <!-- ... -->
+    </svg>
+
+    <header data-bs-theme="dark">
+        <div class="navbar shadow-sm" style="background-color: #F2D785">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/844/844147.png" alt="Aprendiendo con amor"
+                        width="50" height="50">
+                    <strong class="mx-3">Aprendiendo con amor</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main style="background-color: #F2D785;">
+
+        <section class="py-5 text-center container-fluid"
+            style="background-image: url('https://img.freepik.com/vector-gratis/dibujos-animados-regreso-escuela-fondo_52683-77681.jpg?t=st=1725145327~exp=1725148927~hmac=fa4d109437f2b90f7c350957f7ea44d015dbc243e5c85c565ecb0b061370f31c&w=1800'); background-size: cover; background-position: center;">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto"
+                    style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px;">
+                    <h1 class="fw-light">Explora el Mundo del Color y las Palabras</h1>
+                    <p class="lead text-body-secondary">Descubre la magia de los colores y enriquece tu vocabulario.
+                        Sumérgete en esta colección diseñada para hacer del aprendizaje una experiencia vibrante y
+                        divertida. ¡Cada palabra y color es un paso más en tu aventura educativa!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h2 class="text-gallicide font-responsive">COLORES</h2>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 g-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/manzana.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color 1" style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('rojoDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">MANZANA DE COLOR: <span class="text-danger">ROJO</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-danger m-0 font-responsive">ROJO</p>
+                        </div>
+                        <!-- Contenedor de la imagen de superposición -->
+                        <div class="overlay" onclick="reproducirAudio('rojo')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para AMARILLO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/banana.JPG" class="card-img-top p-2 img-fluid object-fit-contain"
+                            alt="Color Amarillo" style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('amarilloDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">PLATANO DE COLOR: <span
+                                    class="text-warning">AMARILLO</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-warning m-0 font-responsive">AMARILLO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('amarillo')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para NARANJA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/naranja.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Naranja"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('naranjaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">NARANJA DE COLOR: <span class="text-orange">NARANJA</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-orange m-0 font-responsive">NARANJA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('naranja')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para VERDE -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/manzana-verde.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Verde"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('verdeDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">MANZANA DE COLOR: <span class="text-success">VERDE</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-success m-0 font-responsive">VERDE</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('verde')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fila para NARANJA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-naranja.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Naranja"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('naranjaDescriptionSplash')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-orange">NARANJA</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-orange m-0 font-responsive">NARANJA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('naranja')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fila para ROSA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-rosa.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Rosa"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('rosaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-pink">ROSA</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-pink m-0 font-responsive">ROSA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('rosa')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para VIOLETA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-violeta.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Violeta"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('violetaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-purple">VIOLETA</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-purple m-0 font-responsive">VIOLETA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('violeta')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para CELESTE -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-celeste.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Celeste"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('celesteDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-info">CELESTE</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-info m-0 font-responsive">CELESTE</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('celeste')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para NEGRO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-negro.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Negro"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('negroDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-dark">NEGRO</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-dark m-0 font-responsive">NEGRO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('negro')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para GRIS -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-gris.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Gris"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('grisDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-muted">GRIS</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-muted m-0 font-responsive">GRIS</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('gris')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para MARRÓN -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-marron.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Marrón"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('marronDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-brown">MARRÓN</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-brown m-0 font-responsive">MARRÓN</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('marron')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para BLANCO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/splash-blanco.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Blanco"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('blancoDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">SPLASH DE COLOR: <span class="text-dark">BLANCO</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-dark m-0 font-responsive">BLANCO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('blanco')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 text-center container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h2 class="text-gallicide" style="font-size: 10rem;">VOCABULARIO</h2>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 g-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/mama.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color 1" style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('mamaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">MAMÁ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">MAMÁ</p>
+                        </div>
+                        <!-- Contenedor de la imagen de superposición -->
+                        <div class="overlay" onclick="reproducirAudio('mama')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para AMARILLO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/papa.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Amarillo"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('papaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">PAPÁ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">PAPÁ</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('papa')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para NARANJA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/hijo.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Naranja"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('hijoDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">HIJO
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">HIJO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('hijo')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para VERDE -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/hija.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Verde"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('hijaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">HIJA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">HIJA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('hija')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fila para NARANJA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/gato.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Naranja"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('gatoDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">GATO
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">GATO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('gato')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fila para ROSA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/perro.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Rosa"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('perroDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">PERRO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">PERRO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('perro')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para VIOLETA -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/vaca.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Violeta"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('vacaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">VACA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">VACA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('vaca')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para CELESTE -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/gallina.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Celeste"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('gallinaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">GALLINA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">GALLINA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('gallina')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para NEGRO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/manzana.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Negro"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('manzanaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">MANZANA
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-dark m-0 font-responsive">MANZANA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('manzana')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para GRIS -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/naranja.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Gris"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('naranjaDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">NARANJA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">NARANJA</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('naranja')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para MARRÓN -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/colores/banana.JPG" class="card-img-top p-2 img-fluid object-fit-contain"
+                            alt="Color Marrón" style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('bananoDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">BANANO
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text m-0 font-responsive">BANANO</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('banano')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila para BLANCO -->
+            <div class="row row-cols-1 row-cols-sm-2 g-3 my-3">
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100" style="border-width: 0.6rem !important;">
+                        <img src="./assets/img/vocabulario/limon.JPG"
+                            class="card-img-top p-2 img-fluid object-fit-contain" alt="Color Blanco"
+                            style="height: 250px;">
+                        <div class="overlay" onclick="reproducirAudio('limonDescription')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <p class="card-text text-center">LIMÓN
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm border-dark rounded-5 h-100 d-flex flex-column justify-content-center"
+                        style="border-width: 0.6rem !important;">
+                        <div class="card-body text-center">
+                            <p class="card-text text-dark m-0 font-responsive">LIMÓN</p>
+                        </div>
+                        <div class="overlay" onclick="reproducirAudio('limon')">
+                            <img src="./assets/img/oreja.png" class="overlay-img img-fluid object-fit-contain"
+                                alt="Overlay Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <audio id="rojo" src="./assets/audios/rojo.mp3"></audio>
+        <audio id="rojoDescription" src="./assets/audios/rojo-d.mp3"></audio>
+        <audio id="amarillo" src="./assets/audios/amarillo.mp3"></audio>
+        <audio id="amarilloDescription" src="./assets/audios/amarillo-d.mp3"></audio>
+        <audio id="naranja" src="./assets/audios/naranja.mp3"></audio>
+        <audio id="naranjaDescription" src="./assets/audios/naranja-d.mp3"></audio>
+        <audio id="naranjaDescriptionSplash" src="./assets/audios/naranja-d-splash.mp3"></audio>
+        <audio id="verde" src="./assets/audios/verde.mp3"></audio>
+        <audio id="verdeDescription" src="./assets/audios/verde-d.mp3"></audio>
+        <audio id="rosa" src="./assets/audios/rosa.mp3"></audio>
+        <audio id="rosaDescription" src="./assets/audios/rosa-d-splash.mp3"></audio>
+        <audio id="violeta" src="./assets/audios/violeta.mp3"></audio>
+        <audio id="violetaDescription" src="./assets/audios/violeta-d-splash.mp3"></audio>
+        <audio id="celeste" src="./assets/audios/celeste.mp3"></audio>
+        <audio id="celesteDescription" src="./assets/audios/celeste-d-splash.mp3"></audio>
+        <audio id="negro" src="./assets/audios/negro.mp3"></audio>
+        <audio id="negroDescription" src="./assets/audios/negro-d-splash.mp3"></audio>
+        <audio id="gris" src="./assets/audios/gris.mp3"></audio>
+        <audio id="grisDescription" src="./assets/audios/gris-d-splash.mp3"></audio>
+        <audio id="marron" src="./assets/audios/marron.mp3"></audio>
+        <audio id="marronDescription" src="./assets/audios/marron-d-splash.mp3"></audio>
+        <audio id="blanco" src="./assets/audios/blanco.mp3"></audio>
+        <audio id="blancoDescription" src="./assets/audios/blanco-d-splash.mp3"></audio>
+
+        <audio id="papa" src="./assets/audios/papa.mp3"></audio>
+        <audio id="papaDescription" src="./assets/audios/papa-d.mp3"></audio>
+        <audio id="hijo" src="./assets/audios/hijo.mp3"></audio>
+        <audio id="hijoDescription" src="./assets/audios/hijo-d.mp3"></audio>
+        <audio id="hija" src="./assets/audios/hija.mp3"></audio>
+        <audio id="hijaDescription" src="./assets/audios/hija-d.mp3"></audio>
+        <audio id="mama" src="./assets/audios/mama.mp3"></audio>
+        <audio id="mamaDescription" src="./assets/audios/mama-d.mp3"></audio>
+        <audio id="perro" src="./assets/audios/perro.mp3"></audio>
+        <audio id="perroDescription" src="./assets/audios/perro-d.mp3"></audio>
+        <audio id="vaca" src="./assets/audios/vaca.mp3"></audio>
+        <audio id="vacaDescription" src="./assets/audios/vaca-d.mp3"></audio>
+        <audio id="gallina" src="./assets/audios/gallina.mp3"></audio>
+        <audio id="gallinaDescription" src="./assets/audios/gallina-d.mp3"></audio>
+        <audio id="gato" src="./assets/audios/gato.mp3"></audio>
+        <audio id="gatoDescription" src="./assets/audios/gato-d.mp3"></audio>
+        <audio id="manzana" src="./assets/audios/manzana.mp3"></audio>
+        <audio id="manzanaDescription" src="./assets/audios/manzana-d.mp3"></audio>
+        <audio id="naranja" src="./assets/audios/naranja.mp3"></audio>
+        <audio id="naranjaDescription" src="./assets/audios/naranja-d.mp3"></audio>
+        <audio id="banano" src="./assets/audios/banano.mp3"></audio>
+        <audio id="bananoDescription" src="./assets/audios/banano-d.mp3"></audio>
+        <audio id="limon" src="./assets/audios/limon.mp3"></audio>
+        <audio id="limonDescription" src="./assets/audios/limon-d.mp3"></audio>
+
+    </main>
+
+    <script>
+        function reproducirAudio(id) {
+            var audio = document.getElementById(id);
+            if (audio) {
+                audio.play();
+            }
+        }
+    </script>
+</body>
+
+</html>
